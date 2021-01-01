@@ -1,0 +1,10 @@
+#server:
+#  port: 8080
+
+spring:
+  data:
+    mongodb:
+#      host: localhost
+       uri: mongodb+srv://nicha1234:Wins2020@cluster0.ridwc.mongodb.net/localhost?retryWrites=true&w=majority
+       database: localhost
+
