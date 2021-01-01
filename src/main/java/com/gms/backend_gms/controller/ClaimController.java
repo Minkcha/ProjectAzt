@@ -41,11 +41,7 @@ public class ClaimController {
 //        return "Add claim with id : " + saveClaim.toString();
 //    }
 
-    private java.util.Date getDateClaim(){
-        Calendar cal = Calendar.getInstance();
-        java.util.Date today = cal.getTime();
-        return today;
-    }
+
 
 
 

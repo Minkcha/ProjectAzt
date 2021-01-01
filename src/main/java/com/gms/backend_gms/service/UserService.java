@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -28,18 +29,37 @@ public class UserService {
     @Autowired
     private ClaimFromRepository claimFromRepository;
 
+
+
+//    public User addClaim(String id,PackageInsurance packageInsurance)
+//    {
+//
+//        User user = userRepository.findById(id).get();
+//        packageInsurance.setExpDate(getDate().toString());
+//        packageInsurance.setAmountLimit(packageInsurance.getPrice());
+//        packageRepository.save(packageInsurance);
+//        user.getPackageInsurances().add(packageInsurance.getPackageId());
+//        System.out.println(user);
+//        userRepository.save(user);
+//
+////        user.setPackages(packageInsurance.getPackageId());
+//
+//        return user;
+//    }
+
+
+
     public User addPackage(String id,PackageInsurance packageInsurance)
     {
-
         User user = userRepository.findById(id).get();
         packageInsurance.setExpDate(getDate().toString());
         packageInsurance.setAmountLimit(packageInsurance.getPrice());
         packageRepository.save(packageInsurance);
+        if(user.getPackageInsurances() == null) {
+            user.setPackageInsurances(new ArrayList<String>());
+        }
         user.getPackageInsurances().add(packageInsurance.getPackageId());
-        System.out.println(user);
         userRepository.save(user);
-
-//        user.setPackages(packageInsurance.getPackageId());
 
         return user;
     }
@@ -47,9 +67,15 @@ public class UserService {
     private java.util.Date getDate(){
         Calendar cal = Calendar.getInstance();
         java.util.Date today = cal.getTime();
-        cal.add(Calendar.YEAR, 1); // to get previous year add -1
+        cal.add(Calendar.YEAR, 1);
         java.util.Date nextYear = cal.getTime();
         return nextYear;
+    }
+
+    private java.util.Date getDateClaim(){
+        Calendar cal = Calendar.getInstance();
+        java.util.Date today = cal.getTime();
+        return today;
     }
 
 

@@ -51,10 +51,8 @@ public class UserController {
 //        return ResponseEntity.ok(userService.addPackage(id));
 //    }
 
-    @PostMapping("/{id}/package")
+    @PostMapping("/{id}/addPackage")
     public ResponseEntity<?> addPackage(@PathVariable String id, @RequestBody PackageInsurance packageInsuranceT){
-//        System.out.print("--------------------------------------");
-//        System.out.println("[===]"+packageInsurance.get("id"));
         return ResponseEntity.ok(userService.addPackage(id,packageInsuranceT));
     }
 

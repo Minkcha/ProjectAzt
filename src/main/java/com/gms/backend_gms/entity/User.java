@@ -43,7 +43,7 @@ public class User {
         this.claims = claims;
     }
 
-//    public void setPackage(String packageInsuranceId){
+    //    public void setPackage(String packageInsuranceId){
 //        this.packages.add(packageInsuranceId);
 //    }
 

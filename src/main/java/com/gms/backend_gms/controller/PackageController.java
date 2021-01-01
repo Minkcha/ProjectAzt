@@ -31,7 +31,7 @@ public class PackageController {
     private java.util.Date getDate(){
         Calendar cal = Calendar.getInstance();
         java.util.Date today = cal.getTime();
-        cal.add(Calendar.YEAR, 1); // to get previous year add -1
+        cal.add(Calendar.YEAR, 1);
         java.util.Date nextYear = cal.getTime();
         return nextYear;
     }
