@@ -9,29 +9,30 @@ import org.springframework.data.annotation.Id;
 @Data
 public class ClaimFrom {
     @Id
-    private int claimId;
+    private String claimId;
 
     @NonNull
     private String trackNumber;
+    @NonNull
+    private String nameProduct;
+    @NonNull
     private String deliveryCompany;
-    private int userId;
     private String date;
+    @NonNull
     private String photoProduct;
+    @NonNull
     private double price;
-    private Boolean status;
 
-    public ClaimFrom(String trackNumber, String deliveryCompany, int userId, String date, int claimId, String photoProduct, double price, Boolean status) {
+    public ClaimFrom(String trackNumber, String deliveryCompany, String date, String photoProduct, double price,String nameProduct) {
         this.trackNumber = trackNumber;
         this.deliveryCompany = deliveryCompany;
-        this.userId = userId;
         this.date = date;
-        this.claimId = claimId;
+        this.nameProduct = nameProduct;
         this.photoProduct = photoProduct;
         this.price = price;
-        this.status = status;
     }
 
-    public ClaimFrom(){}
+//    public ClaimFrom(){}
 
     public void setPrice(double price,int typeP){
         double percent;

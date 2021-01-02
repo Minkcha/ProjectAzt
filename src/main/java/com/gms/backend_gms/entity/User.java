@@ -1,5 +1,6 @@
 package com.gms.backend_gms.entity;
 
+import com.mongodb.lang.NonNull;
 import lombok.Data;
 
 import lombok.Setter;
@@ -13,13 +14,19 @@ import java.util.ArrayList;
 public class User {
     @Id
     private String userId;
-
+    @NonNull
     private String name;
+    @NonNull
     private String surname;
+    @NonNull
     private String citizenId;
+    @NonNull
     private String email;
+    @NonNull
     private String password;
+    @NonNull
     private String tel;
+
     private ArrayList<String> packageInsurances = new ArrayList<String>();
     private ArrayList<String> claims = new ArrayList<String>();
 

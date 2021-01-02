@@ -6,6 +6,7 @@ import com.gms.backend_gms.repository.PackageRepository;
 import com.gms.backend_gms.repository.UserRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
@@ -21,12 +22,15 @@ public class PackageController {
     @Autowired
     private PackageRepository packageRepository;
 
+
     @PostMapping("/addPackage")
     public String addPackage(@RequestBody PackageInsurance packageInsurance) {
         packageInsurance.setExpDate(getDate().toString());
         packageRepository.save(packageInsurance);
         return "Add package with id : " + packageInsurance.toString();
     }
+
+
 
     private java.util.Date getDate(){
         Calendar cal = Calendar.getInstance();

@@ -3,15 +3,14 @@ package com.gms.backend_gms.service;
 
 import com.gms.backend_gms.entity.PackageInsurance;
 import com.gms.backend_gms.entity.User;
-import com.gms.backend_gms.repository.ClaimFromRepository;
 import com.gms.backend_gms.repository.PackageRepository;
 import com.gms.backend_gms.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -23,37 +22,11 @@ public class UserService {
     @Autowired
     private PackageRepository packageRepository;
 
-//    @Autowired
-//    private PackageInsurance packageInsurance;
-
-    @Autowired
-    private ClaimFromRepository claimFromRepository;
-
-
-
-//    public User addClaim(String id,PackageInsurance packageInsurance)
-//    {
-//
-//        User user = userRepository.findById(id).get();
-//        packageInsurance.setExpDate(getDate().toString());
-//        packageInsurance.setAmountLimit(packageInsurance.getPrice());
-//        packageRepository.save(packageInsurance);
-//        user.getPackageInsurances().add(packageInsurance.getPackageId());
-//        System.out.println(user);
-//        userRepository.save(user);
-//
-////        user.setPackages(packageInsurance.getPackageId());
-//
-//        return user;
-//    }
-
-
 
     public User addPackage(String id,PackageInsurance packageInsurance)
     {
         User user = userRepository.findById(id).get();
-        packageInsurance.setExpDate(getDate().toString());
-        packageInsurance.setAmountLimit(packageInsurance.getPrice());
+        packageInsurance.setExpDate(getDate());
         packageRepository.save(packageInsurance);
         if(user.getPackageInsurances() == null) {
             user.setPackageInsurances(new ArrayList<String>());
@@ -64,19 +37,26 @@ public class UserService {
         return user;
     }
 
-    private java.util.Date getDate(){
-        Calendar cal = Calendar.getInstance();
-        java.util.Date today = cal.getTime();
-        cal.add(Calendar.YEAR, 1);
-        java.util.Date nextYear = cal.getTime();
-        return nextYear;
+    public User addUser(User user) throws Exception {
+        List<User> listUser = userRepository.findFirstByEmail(user.getEmail());
+        User newUser;
+        if(listUser.size() == 0) {
+            newUser = userRepository.save(user);
+        } else {
+            throw new Exception("User with "+ user.getEmail() +" is already exist");
+        }
+
+        return newUser;
     }
 
-    private java.util.Date getDateClaim(){
-        Calendar cal = Calendar.getInstance();
-        java.util.Date today = cal.getTime();
-        return today;
+    private String getDate(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+        Date today = new Date();
+        return sdf.format(new Date(today.getTime() + (1000L * 60 * 60 * 24 * 365)));
     }
+
+
+
 
 
 
