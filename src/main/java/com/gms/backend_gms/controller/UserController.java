@@ -19,7 +19,6 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-
     @Autowired
     private UserRepository userRepository;
 
@@ -53,11 +52,6 @@ public class UserController {
       return userRepository.findFirstByUserId(userId);
     }
 
-
-    @PostMapping("/allPackages")
-    public List<PackageInsurance> getUserAllPackages(@RequestBody UserPackages userPackages){
-        return packageService.findAllPackages(userPackages);
-    }
 
 //    @PostMapping("/{id}/package")
 //    public ResponseEntity<?> addPackage(@PathVariable String id, @RequestBody Map<String, Object> packageInsurance){

@@ -37,4 +37,16 @@ public class PackageInsurance {
         }
     }
 
+    public void setPrice(double price,int typeP){
+        double percent;
+        if (typeP == 1){
+            percent = 0.3;
+        }
+        else if (typeP == 2){
+            percent = 0.4 ;
+        }
+        else{ percent = 0.5;}
+
+        this.price = price*typeP;
+    }
 }

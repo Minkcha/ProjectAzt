@@ -10,7 +10,8 @@ import org.springframework.data.annotation.Id;
 public class ClaimFrom {
     @Id
     private String claimId;
-
+    @NonNull
+    private String packageId;
     @NonNull
     private String trackNumber;
     @NonNull
@@ -24,28 +25,12 @@ public class ClaimFrom {
     @NonNull
     private double price;
 
-    public ClaimFrom(String trackNumber, String deliveryCompany, String photoProduct, double price,String nameProduct) {
+    public ClaimFrom(String packageId,String trackNumber, String deliveryCompany, String photoProduct, double price,String nameProduct) {
+        this.packageId = packageId;
         this.trackNumber = trackNumber;
         this.deliveryCompany = deliveryCompany;
         this.nameProduct = nameProduct;
         this.photoProduct = photoProduct;
         this.price = price;
     }
-
-//    public ClaimFrom(){}
-
-    public void setPrice(double price,int typeP){
-        double percent;
-        if (typeP == 1){
-            percent = 0.3;
-        }
-        else if (typeP == 2){
-            percent = 0.4 ;
-        }
-        else{ percent = 0.5;}
-
-        this.price = price*typeP;
-    }
-
-
 }

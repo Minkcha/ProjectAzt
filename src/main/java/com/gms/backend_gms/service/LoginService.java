@@ -13,7 +13,6 @@ public class LoginService {
 
     @Autowired
     UserRepository userRepository;
-    String a = "asdfjkl;";
 
     public User userLogin(Login login) throws Exception{
         List<User> user = userRepository.findFirstByEmail(login.getEmail());
@@ -27,3 +26,5 @@ public class LoginService {
         throw new Exception("user not found");
     }
 }
+
+

@@ -28,9 +28,9 @@ public class ClaimController {
 //    @Autowired
 //    PackageInsurance packageInsurance;
 
-    @PostMapping("/{id}/addClaim")
-    public ResponseEntity<?> addClaim(@PathVariable String id, @RequestBody ClaimFrom claimFrom){
-        return ResponseEntity.ok(claimFromService.addClaim(id,claimFrom));
+    @PostMapping("/{userId}/addClaim")
+    public ResponseEntity<?> addClaim(@PathVariable String userId, @RequestBody ClaimFrom claimFrom){
+        return ResponseEntity.ok(claimFromService.addClaim(userId,claimFrom));
     }
 
 
