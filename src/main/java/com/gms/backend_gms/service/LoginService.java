@@ -13,11 +13,12 @@ public class LoginService {
 
     @Autowired
     UserRepository userRepository;
+    String a = "asdfjkl;";
 
     public User userLogin(Login login) throws Exception{
         List<User> user = userRepository.findFirstByEmail(login.getEmail());
         if(user.size() != 0){
-            if(user.get(0).getEmail() == login.getEmail() && user.get(0).getPassword()==login.getPassword()){
+            if( user.get(0).getEmail().equals(login.getEmail()) && user.get(0).getPassword().equals(login.getPassword())){
                 return user.get(0);
             }
             throw new Exception("email or password incorrect");

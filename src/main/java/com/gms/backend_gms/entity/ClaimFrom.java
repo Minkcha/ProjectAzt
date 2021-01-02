@@ -17,16 +17,16 @@ public class ClaimFrom {
     private String nameProduct;
     @NonNull
     private String deliveryCompany;
+
     private String date;
     @NonNull
     private String photoProduct;
     @NonNull
     private double price;
 
-    public ClaimFrom(String trackNumber, String deliveryCompany, String date, String photoProduct, double price,String nameProduct) {
+    public ClaimFrom(String trackNumber, String deliveryCompany, String photoProduct, double price,String nameProduct) {
         this.trackNumber = trackNumber;
         this.deliveryCompany = deliveryCompany;
-        this.date = date;
         this.nameProduct = nameProduct;
         this.photoProduct = photoProduct;
         this.price = price;

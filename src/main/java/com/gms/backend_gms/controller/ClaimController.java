@@ -14,7 +14,6 @@ import java.util.Calendar;
 
 @RestController
 @RequestMapping("/claimFrom")
-@CrossOrigin
 public class ClaimController {
 
     @Autowired

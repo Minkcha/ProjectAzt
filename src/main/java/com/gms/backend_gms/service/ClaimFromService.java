@@ -29,7 +29,7 @@ public class ClaimFromService {
     public User addClaim(String id,ClaimFrom claimFrom)
     {
         User user = userRepository.findById(id).get();
-        claimFrom.setDate(getDateClaim().toString());
+        claimFrom.setDate(getDateClaim());
         claimFromRepository.save(claimFrom);
         if(user.getClaims() == null) {
             user.setClaims(new ArrayList<String>());
@@ -46,10 +46,9 @@ public class ClaimFromService {
 
     }
 
-    private java.util.Date getDateClaim(){
+    private String getDateClaim(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
-        Date today = new Date();
-        return today;
+        return sdf.format(new Date());
     }
 
 
