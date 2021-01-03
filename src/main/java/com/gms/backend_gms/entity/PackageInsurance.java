@@ -20,21 +20,11 @@ public class PackageInsurance {
     private double amountLimit;
     @NonNull
     private double price;
-    private String detail;
 
     public PackageInsurance(int typePackage,double price) {
         this.typePackage = typePackage;
         this.amountLimit = price;
         this.price = price;
-        if(typePackage == 1) {
-            this.detail = "wdw";
-        }
-        else if(typePackage == 2){
-            this.detail = "fmsmgkg";
-        }
-        else {
-            this.detail = "gjiodjfgijfdok";
-        }
     }
 
     public void setPrice(double price,int typeP){

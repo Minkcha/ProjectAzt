@@ -24,6 +24,7 @@ public class ClaimFromService {
     ClaimFromRepository claimFromRepository;
 
 
+
     public User addClaim(String userId, ClaimFrom claimFrom) {
         claimFrom.setDate(getDateClaim());
         claimFromRepository.save(claimFrom);
@@ -75,6 +76,17 @@ public class ClaimFromService {
             claimFrom.add(c);
         });
         return claimFrom;
+    }
+
+    public ArrayList<PackageInsurance> findAllAvailablePackages(UserPackages userPackages){
+        ArrayList<PackageInsurance> packageInsurance = new ArrayList<>();
+        userPackages.getUserPackages().forEach((id) -> {
+            PackageInsurance p = packageRepository.findById(id).get();
+            if (p.getAmountLimit()>0 && !p.getExpDate().equals(getDateClaim())){
+                packageInsurance.add(p);
+            }
+        });
+        return packageInsurance;
     }
 
 
